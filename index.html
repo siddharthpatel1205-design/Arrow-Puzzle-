@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arrow Neon Puzzle</title>
+<meta name="theme-color" content="#0b0f14">
+<meta name="description" content="Arrow Neon Puzzle: clear every arrow off the board.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Arrow Neon">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="boot"><div class="spin"></div><p>Loading ads...</p></div>
+<main id="app">
+  <div id="ad" class="adslot"></div>
+  <header>
+    <h1>Arrow Neon</h1>
+    <button id="install" hidden>Install app</button>
+    <div class="coins">Coins <b id="coins">0</b></div>
+  </header>
+  <div class="levelrow"><span>Level <b id="level">1</b></span><div class="bar"><i id="bar"></i></div></div>
+  <div id="hearts" aria-label="Lives"></div>
+  <div id="stagewrap">
+    <div id="stage"><div id="board" role="grid" aria-label="Arrow board"></div></div>
+    <div id="zoomctl">
+      <button id="zout" aria-label="Zoom out">&minus;</button>
+      <button id="zreset" aria-label="Reset zoom">1&times;</button>
+      <button id="zin" aria-label="Zoom in">+</button>
+    </div>
+  </div>
+  <div class="btns">
+    <button id="think">Think (10 coins)</button>
+    <button id="restart">Restart</button>
+    <button id="free-coins">Free coins ▶</button>
+  </div>
+  <p id="msg" aria-live="polite">Tap an arrow whose path to the edge is clear.</p>
+</main>
+
+<div class="modal" id="modal-over" hidden>
+  <div class="card">
+    <h2>Out of hearts</h2>
+    <p>Three blocked arrows were tapped. Restart to try this level again.</p>
+    <button id="over-ad" class="primary">Watch video: continue</button>
+    <button id="over-restart">Restart level</button>
+    <p id="over-note" class="note"></p>
+    <div id="ad-over" class="adslot mid"></div>
+  </div>
+</div>
+<div class="modal" id="modal-win" hidden>
+  <div class="card win" role="dialog" aria-labelledby="win-title">
+    <div class="badge"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M14 25l7 7 13-15"/></svg></div>
+    <h2 id="win-title">Level <span id="win-level">1</span> complete!</h2>
+    <div class="stars" id="win-stars" aria-label="Rating"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+    <div class="reward">+<b id="win-coins">0</b> coins</div>
+    <div class="stats">
+      <div><small>Hearts left</small><b id="win-hearts">3</b></div>
+      <div><small>Total coins</small><b id="win-total">0</b></div>
+    </div>
+    <button id="win-next" class="primary">Next level</button>
+    <div id="ad-win" class="adslot mid"></div>
+  </div>
+</div>
+<div id="adlayer" hidden><video id="advideo" playsinline muted></video><div id="adcontainer"></div></div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
